@@ -22,7 +22,7 @@ jobs:
       run: |
         npm install -g esy
     - name: install libpng and ragel for MacOS
-      if: matrix.os == macOS-latest
+      if: matrix.os == "macOS-latest"
       run: |
         brew update
         brew install libpng ragel
