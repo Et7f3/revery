@@ -20,7 +20,7 @@ jobs:
         node-version: ${{ matrix.node_version }}
     - name: install esy
       run: |
-        npm install -g esyc
+        npm install -g esy
     - name: Install dependencies
       run: |
         esy install
