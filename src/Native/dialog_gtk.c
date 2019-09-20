@@ -7,7 +7,7 @@ static void activate(GtkApplication *app, const char *user_data) {
 
   GtkDialogFlags flags = GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT;
   dialog = gtk_message_dialog_new(NULL, flags, GTK_MESSAGE_INFO,
-                                  GTK_BUTTONS_CLOSE, user_data);
+                                  GTK_BUTTONS_CLOSE, "%s", user_data);
   gtk_dialog_run(GTK_DIALOG(dialog));
   gtk_widget_destroy(dialog);
 }
