@@ -27,7 +27,7 @@ CAMLprim value revery_menuSupported()
 CAMLprim value revery_create_menu()
 {
     CAMLparam0();
-    value ret;
+    value ret = NULL;
 
 #ifdef WIN32
     ret = revery_create_menu_win32();
