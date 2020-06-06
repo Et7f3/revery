@@ -143,7 +143,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: docker build -t ${{ matrix.os }} scripts/docker/${{ matrix.os }}
-      - run: docker run --rm --volume $(pwd):/revery --volume ~:/esy/store ${{ matrix.os }} bash -c "cd /revery && esy install --prefix-path=/esy/store/.esy"
+      - run: |
+        echo We are $(pwd)
+        ls -1 -R $(pwd)
+        docker run --rm --volume $(pwd):/revery --volume ~:/esy/store ${{ matrix.os }} bash -c "cd /revery && esy install --prefix-path=/esy/store/.esy"
+        echo We are $(pwd)
+        ls $(pwd)
+        find .
       - name: Print esy cache
         id: print_esy_cache
         run: node .github/workflows/print_esy_cache.js
