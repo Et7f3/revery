@@ -153,7 +153,7 @@ jobs:
           #find .
           ls -l ~/.esy ~ $(pwd)
           #Folder is owned by docker
-          chmod +w ~/.esy
+          sudo chmod +w ~/.esy
       - name: Print esy cache
         id: print_esy_cache
         run: node .github/workflows/print_esy_cache.js
