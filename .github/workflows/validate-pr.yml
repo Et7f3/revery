@@ -151,7 +151,7 @@ jobs:
           #echo We are $(pwd)
           #ls $(pwd)
           #find .
-          ls -l ~/.esy
+          ls -l ~/.esy ~ $(pwd)
           #Folder is owned by docker
           chmod +w ~/.esy
       - name: Print esy cache
