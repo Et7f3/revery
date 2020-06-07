@@ -4,5 +4,6 @@
   (pps brisk-reconciler.ppx lwt_ppx))
  (public_name Revery.lib_view)
  (modes native byte)
- (ocamlc_flags (:standard -custom))
+ (ocamlc_flags
+  (:standard -custom))
  (libraries dynlink ExampleStubs skia str Revery flex timber Revery_UI))

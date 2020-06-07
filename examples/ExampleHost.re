@@ -46,7 +46,11 @@ let state: state = {
       render: _ => CheckboxExample.render(),
       source: "CheckboxExample.re",
     },
-    {name: "Slider", render: _ => SliderExample.render(), source: "Slider.re"},
+    {
+      name: "Slider",
+      render: _ => SliderExample.render(),
+      source: "Slider.re",
+    },
     {name: "Border", render: _ => Border.render(), source: "Border.re"},
     {
       name: "ScrollView",
@@ -195,8 +199,10 @@ let getSourceForSample = (state: state, example: string) =>
 
 let noop = () => ();
 
-let getRenderFunctionSelector: (state, string, Window.t) => React.element(React.node) =
-  (s: state, selectedExample) => getExampleByName(s, selectedExample) |> (a => a.render);
+let getRenderFunctionSelector:
+  (state, string, Window.t) => React.element(React.node) =
+  (s: state, selectedExample) =>
+    getExampleByName(s, selectedExample) |> (a => a.render);
 
 module ExampleButton = {
   let make = (~isActive, ~name, ~onClick, ()) => {
@@ -235,12 +241,20 @@ Revery_Core.Event.dispatch(Revery.UI.hotReload, ());
 
 module ExampleHost = {
   let%component make = (~window, ~initialExample, ~setGen, ()) => {
-    let%hook (state, dispatch) = Hooks.reducer(~initialState={...state, selectedExample: initialExample}, reducer);
-    let%hook () = Hooks.effect(If((!=), Hook_p.gen^), () => {
-        Printf.printf("Hook_p.gen^ <> Hook_p.gen^\n%!");
-        setGen(gen => gen + 1);
-        None
-    });
+    let%hook (state, dispatch) =
+      Hooks.reducer(
+        ~initialState={...state, selectedExample: initialExample},
+        reducer,
+      );
+    let%hook () =
+      Hooks.effect(
+        If((!=), Hook_p.gen^),
+        () => {
+          Printf.printf("Hook_p.gen^ <> Hook_p.gen^\n%!");
+          setGen(gen => gen + 1);
+          None;
+        },
+      );
 
     let renderButton = example => {
       let isActive = example.name === state.selectedExample;
@@ -257,7 +271,8 @@ module ExampleHost = {
 
     let buttons = List.map(renderButton, state.examples);
 
-    let exampleRender = getRenderFunctionSelector(initState, state.selectedExample);
+    let exampleRender =
+      getRenderFunctionSelector(initState, state.selectedExample);
     let exampleView = exampleRender(window);
 
     <View

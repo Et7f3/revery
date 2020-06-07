@@ -5,7 +5,8 @@
  (package Revery)
  (public_names Examples)
  (modes native byte)
- (ocamlc_flags (:standard -custom))
+ (ocamlc_flags
+  (:standard -custom))
  (libraries lib_view dynlink skia str Revery timber))
 
 (install
