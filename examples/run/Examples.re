@@ -103,7 +103,7 @@ let load = {
       Sys.getcwd();
     };
   let filename = Filename.concat(filename, "default");
-  let name = /*Dynlink.adapt_filename*/("examples/ExampleHost.cmxs");
+  let name = /*Dynlink.adapt_filename*/ "examples/ExampleHost.cmxs";
   let filename = Filename.concat(filename, name);
   fun
   | () => {

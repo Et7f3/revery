@@ -5,5 +5,7 @@
  (modes plugin byte)
  (ocamlc_flags
   (:standard -custom))
- (embed_in_plugin_libraries Revery_Native Revery_UI_Components Revery_Math Revery_UI_Hooks Revery_IO fetch-native-lwt Revery_UI_Primitives ExampleStubs skia str flex timber Revery_UI)
+ (embed_in_plugin_libraries Revery_Native Revery_UI_Components Revery_Math
+   Revery_UI_Hooks Revery_IO fetch-native-lwt Revery_UI_Primitives
+   ExampleStubs skia str flex timber Revery_UI)
  (libraries dynlink ExampleStubs skia str Revery flex timber Revery_UI))
