@@ -1,12 +1,4 @@
 open Revery;
-open Lib_view;
-/*
- open ExampleHost;
- let a:
-   (~key: Brisk_reconciler.Key.t=?, ~window: Revery.Window.t, ~initialExample: string, unit) =>
-   Brisk_reconciler.element(Revery_UI.viewNode) = ExampleHost.make;
- */
-let _ignore = ExampleHost.ExampleHost.make;
 
 module ExampleHost = {
   let%component make = (~window, ~initialExample, (), hooks) => {
@@ -111,7 +103,7 @@ let load = {
       Sys.getcwd();
     };
   let filename = Filename.concat(filename, "default");
-  let name = Dynlink.adapt_filename("examples/lib_view.cma");
+  let name = /*Dynlink.adapt_filename*/("examples/ExampleHost.cmxs");
   let filename = Filename.concat(filename, name);
   fun
   | () => {
